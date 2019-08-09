@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Module1_Extension_GameRedBlack.js">
+    </script>
+    <style>
+        button{
+            width: 100px;
+        }
+    </style>
+</head>
+<body onload="resetBoBai()">
+<table border="1px">
+    <tr>
+        <td>Bộ Bài: </td>
+        <td width="1000px"><span id="deckCard"></span> </td>
+        <td><button onclick="resetBoBai()">RESET</button></td>
+    </tr>
+    <tr>
+        <td>Player 1:</td>
+        <td><span id="play1"></span></td>
+        <td><button onclick="xaoBai(300)">XÀO BÀI</button></td>
+    </tr>
+    <tr>
+        <td>Player 2:</td>
+        <td><span id="play2"></span></td>
+        <td><button onclick="chiaBai()">CHIA BÀI</button></td>
+    </tr>
+    <tr>
+        <td>Kết Quả</td>
+        <td><span id="result"></span> </td>
+        <td><button onclick="soSanh()">WIN-LOSE </button></td>
+    </tr>
+</table>
+
+</body>
+</html>
