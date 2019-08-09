@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai tap DB</title>
+</head>
+<body>
+<script>
+    let array=[];
+    let player1=[];
+    let player2=[];
+    let player1win=[];
+    let player2win=[];
+    for (let i = 1; i <53; i++){
+        array[i-1]=i;
+    }
+    let ctr=array.length, index, temp;
+    while (ctr > 0){
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp=array[ctr];
+        array[ctr] = array[index];
+        array[index] = temp;
+    }
+
+    for (let i = 0;i< 52; i++){
+        if (i%2==0){
+            player1[i/2]=array[i];
+        }else {
+            player2[(i-1)/2]=array[i];
+        }
+    }
+    for (let i=0; i<26; i++){
+        if (player1[i]> player2[i]){
+            player1win.push(i);
+        }else {
+            player2win.push(i);
+        }
+    }
+    if (player1win.length> player2win.length){
+        document.write("Result: ty so (" + player1win.length + ":" + player2win.length + ") Player 1 win");
+    }else if (player1win.length< player2win.length){
+        document.write("Result: ty so (" + player1win.length + ":" + player2win.length + ") Player 2 win");
+    }else {
+        document.write("Result: ty so (" + player1win.length + ":" + player2win.length + ") Player 1 hoa player 2");
+    }
+    console.log(array);
+    console.log(player1);
+    console.log(player2);
+    console.log(player1win);
+    console.log(player2win);
+</script>
+</body>
+</html>
