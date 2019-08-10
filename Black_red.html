@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <title>Black Red</title>
 </head>
-<body>
+<body onload="start()">
 
 <p id="display" style="border: red; width: 50%"></p>
 
 <P id="display2" style="border: red;width: 50%; left: 50%"></P>
 <br>
-<button type="button" onclick="start()">START</button>
+
 <button type="button" onclick="shuffle()">SHUFFLE</button>
 <button type="button" onclick="distribute()">DISTRIBUTE</button>
+
+<h1>Please make your choice</h1>
+
+<select id="choice" type="number">
+        <option value="1"> Player1</option>
+        <option value="2"> Player2</option>
+        <option value="3"> Balance</option>
+
+    </select>
+
 <button type="button" onclick="result()">RESULT</button>
-<button type="button" onclick="clear()">CLEAR</button>
+<button type="button" onclick="flipGameble()">FLIP</button>
 <script>
 
         let array = [];
@@ -30,43 +40,55 @@
             displ2.innerHTML =" "
         }
          function shuffle() {
+                displ1.innerHTML =" "
              array.sort(function () {
                  return 0.5 - Math.random();
              })
-             displ1.innerHTML = " " +array;
+             displ1.innerHTML = " ******************************************************************************";
              displ2.innerText =" ";
          }
-        function distribute(){
-           arrayPlayer2= arrayPlayer2.slice(0,0);
-            arrayPlayer1=arrayPlayer1.slice(0,0);
-            console.log(arrayPlayer1);
-            console.log(arrayPlayer2);
+        function distribute() {
+            arrayPlayer2 = arrayPlayer2.slice(0, 0);
+            arrayPlayer1 = arrayPlayer1.slice(0, 0);
             for (let i = 0; i < 52; i += 2) {
                 arrayPlayer1.push(array[i]);
                 arrayPlayer2.push(array[i + 1]);
+                displ1.innerHTML ="**************************"
+                displ2.innerHTML ="**************************"
             }
+        }
+        function flipGameble(){
             displ1.innerHTML = "Player1: " + arrayPlayer1;
             displ2.innerHTML = "player2: " + arrayPlayer2;
         }
         function result() {
             let count = 0;
+            let choose =document.getElementById('choice').value;
             for (let i = 0; i <26; i++) {
                  if (arrayPlayer1[i] > arrayPlayer2[i]) {
                     count ++;
                              }
                     }
-                console.log(arrayPlayer1);
-                console.log(arrayPlayer2);
-                console.log(count);
+                console.log(choose);
                 if (count < 13) {
                     displ1.innerHTML = (' Player2: Win');
                 } else if (count > 13) {
                     displ1.innerHTML = (' Player1: Win');
                 } else {
                     displ1.innerHTML = (' Player1: HÒA : Player2');
+                        }
+                if((choose==1 && count>13) || (choose==2 && count<13) || (choose==3 && count ==13)){
+                    alert(" You Win");
+                }else{
+                    alert("You Loose")
                 }
-                     displ2.innerHTML = " ";
 
+                     displ2.innerHTML = " ";
+  //          if((choose =1 && count>13) || (choose=2 && count <13) || (choose =3 && count =13)){
+  //              alert(' YOU WIN');
+   //         }else {
+       //         alert('YOU LOOSE');
+    //        }
         }
         function clear() {
              array.slice(0,51);
