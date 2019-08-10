@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Red</title>
+</head>
+<body>
+
+<p id="display" style="border: red; width: 50%"></p>
+
+<P id="display2" style="border: red;width: 50%; left: 50%"></P>
+<br>
+<button type="button" onclick="start()">START</button>
+<button type="button" onclick="shuffle()">SHUFFLE</button>
+<button type="button" onclick="distribute()">DISTRIBUTE</button>
+<button type="button" onclick="result()">RESULT</button>
+<button type="button" onclick="clear()">CLEAR</button>
+<script>
+
+        let array = [];
+        let arrayPlayer1 = [];
+        let arrayPlayer2 = [];
+        let displ1 = document.getElementById('display');
+        let displ2 = document.getElementById('display2');
+        function start() {
+            for (let i = 1; i <= 52; i++) {
+                array.push(i);
+            }
+            displ1.innerHTML = " " +array;
+            displ2.innerHTML =" "
+        }
+         function shuffle() {
+             array.sort(function () {
+                 return 0.5 - Math.random();
+             })
+             displ1.innerHTML = " " +array;
+             displ2.innerText =" ";
+         }
+        function distribute(){
+           arrayPlayer2= arrayPlayer2.slice(0,0);
+            arrayPlayer1=arrayPlayer1.slice(0,0);
+            console.log(arrayPlayer1);
+            console.log(arrayPlayer2);
+            for (let i = 0; i < 52; i += 2) {
+                arrayPlayer1.push(array[i]);
+                arrayPlayer2.push(array[i + 1]);
+            }
+            displ1.innerHTML = "Player1: " + arrayPlayer1;
+            displ2.innerHTML = "player2: " + arrayPlayer2;
+        }
+        function result() {
+            let count = 0;
+            for (let i = 0; i <26; i++) {
+                 if (arrayPlayer1[i] > arrayPlayer2[i]) {
+                    count ++;
+                             }
+                    }
+                console.log(arrayPlayer1);
+                console.log(arrayPlayer2);
+                console.log(count);
+                if (count < 13) {
+                    displ1.innerHTML = (' Player2: Win');
+                } else if (count > 13) {
+                    displ1.innerHTML = (' Player1: Win');
+                } else {
+                    displ1.innerHTML = (' Player1: HÒA : Player2');
+                }
+                     displ2.innerHTML = " ";
+
+        }
+        function clear() {
+             array.slice(0,51);
+
+            displ1.innerHTML = "Moi chon quan bai";
+            displ2.innerHTML = "";
+        }
+
+</script>
+</body>
+</html>
