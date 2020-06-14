@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POKER GAME</title>
+    <script src="js/Config.js"></script>
+    <script src="js/Poker.js"></script>
+    <script src="js/Card.js"></script>
+    <script src="js/Desk.js"></script>
+    <script src="js/Main.js"></script>
+</head>
+<style>
+    img{
+        width: 100px;
+        height: auto;
+    }
+</style>
+<body>
+<div id="board">
+    <img src="card_deck/cardback.jpg">
+    <button onclick="dealCard()">Deal</button>
+    <button onclick="returnCard()">Reset</button>
+    <div id="desk"></div>
+</div>
+<script>
+    let game = new Desk();
+</script>
+</body>
+</html>
