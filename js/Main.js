@@ -8,14 +8,17 @@ function dealCard() {
         html += cards[i].getHtml();
     }
     display('desk',html);
+    display('count',game.cards.length);
 }
 
 function returnCard() {
     for (let i = 0; i < cards.length; i++) {
         game.addCard(cards[i]);
     }
+    cards = [];
     let html='';
     display('desk',html);
+    display('count',game.cards.length);
 }
 
 function display(elementId,content) {
