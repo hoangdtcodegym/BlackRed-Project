@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Black Red</title>
+</head>
+<body>
+
+<h3>Game Black Red!!!</h3>
+<button type="button" onclick="batDau()">Bat dau choi!</button>
+<p id="boBai"></p><br/>
+<br/><button type="button" onclick="xaoBai()">Xao bai!</button>
+<p id="xaoBai"></p>
+Nguoi choi 1:
+<p id="bo1"></p><br/>
+Nguoi choi 2:
+<p id="bo2"></p><br/>
+<button type="button" onclick="result()">Result!</button><br/><br/>
+TI SO:
+<p id="result"></p>
+<p id="kq"></p>
+
+
+<script>
+    let array = new Array(52);
+    for (let i = 0; i < 52; i++) {
+        array[i] = i % 13 + 1;
+    }
+    let array1 = new Array(26);
+    let array2 = new Array(26);
+
+    function batDau() {
+        let arrBoBai = new Array(52);
+        chuyenTen(array, arrBoBai);
+        document.getElementById("boBai").innerHTML = arrBoBai;
+    }
+
+    function xaoBai() {
+        for (let i = 0; i < 52; i++) {
+            let ran = Math.floor(Math.random() * 52);
+            x = array[i];
+            array[i] = array[ran];
+            array[ran] = x;
+        }
+        let arrBoBai = new Array(52);
+        chuyenTen(array, arrBoBai);
+        document.getElementById("xaoBai").innerHTML = arrBoBai;
+
+        for (let i = 0; i < 52; i++) {
+            if (i % 2 == 0) {
+                array1[i/2] = array[i];
+            } else {
+                array2[(i-1)/2] = array[i];
+            }
+        }
+        let arrBoBai1 = new Array(26);
+        chuyenTen(array1, arrBoBai1);
+        document.getElementById("bo1").innerHTML = arrBoBai1;
+        let arrBoBai2 = new Array(26);
+        chuyenTen(array2, arrBoBai2);
+        document.getElementById("bo2").innerHTML = arrBoBai2;
+    }
+
+    function result() {
+        let kq = [0, 0];
+        for (let i = 0; i < 26; i++) {
+            if (array1[i] > array2[i]) {
+                kq[0] += 1;
+            }
+            if (array1[i] < array2[i]) {
+                kq[1] += 1;
+            }
+        }
+        document.getElementById("result").innerHTML = kq;
+        if (kq[0] > kq[1]) {
+            document.getElementById("kq").innerHTML = "Nguoi choi 1 chien thang!";
+        } else if (kq[0] == kq[1]) {
+            document.getElementById("kq").innerHTML = "Hai nguoi choi hoa nhau!";
+        } else {
+            document.getElementById("kq").innerHTML = "Nguoi choi 2 chien thang!";
+        }
+    }
+
+    function chuyenTen(arrX, arrY) {
+        for (let i = 0; i < arrX.length; i++) {
+            switch (arrX[i]) {
+                case 1:
+                    arrY[i] = "A";
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                    arrY[i] = arrX[i];
+                    break;
+                case 11:
+                    arrY[i] = "J";
+                    break;
+                case 12:
+                    arrY[i] = "Q";
+                    break;
+                case 13:
+                    arrY[i] = "K";
+                    break;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
