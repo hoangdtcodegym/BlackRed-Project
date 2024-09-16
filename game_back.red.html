@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RED/BLACK</title>
+</head>
+<body>
+<h1>GAME BÀI BLACK/RED</h1>
+<input id="chiabai" type="button" onclick="rutBai()" value="So Sánh">
+<p id="nua1" style="font-weight: bold"></p>
+<p id="nua2" style="font-weight: bold"></p>
+<p id="win1" style="font-weight: bold"></p>
+<p id="win2" style="font-weight: bold"></p>
+<p id="Result" style="font-weight: bold"></p>
+<script>
+                function rutBai() {
+                    let bobai = [];
+                    for (let i = 1; i <= 52; i++) {
+                        bobai.push(i);
+                    }
+                    bobai.sort(function (a, b) {
+                        return 0.5 - Math.random();}); //Lệnh trộn bài ngẫu nhiên;
+                    let nua1 = [];
+                    let nua2 = [];
+                    for (let i = 1; i <= 52; i++) {
+                        if (i % 2 == 0) {
+                            nua1.push(bobai[i]);
+                        } else {
+                            nua2.push(bobai[i]);
+            }
+        }
+        document.getElementById("nua1").innerHTML = "Nửa 1 Có: " + nua1;
+        document.getElementById("nua2").innerHTML = "Nửa 2 Có: " + nua2;
+        let win1 = 0;
+        let win2 = 0;
+        for (let i = 1; i <= 26; i++) {
+            if (nua1[i] > nua2[i]) {
+                win1 = win1 + 1;
+            } else {
+                win2 = win2 + 1;
+            }
+        }
+        if (win1 > win2) {
+            document.getElementById("Result").innerHTML = "Nửa 1 Win";
+        } else if (win2 > win1) {
+            document.getElementById("Result").innerHTML = "Nửa 2 Win";
+        } else {
+            document.getElementById("Result").innerHTML = "2 Nửa Hòa Nhau";
+        }
+        document.getElementById("win1").innerHTML = "Nửa 1 Win " + win1 + " lần";
+        document.getElementById("win2").innerHTML = "Nửa 2 Win " + win2 + " lần";
+    }
+</script>
+</body>
+</html>
