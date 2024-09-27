@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pay to win</title>
+</head>
+<body>
+
+<p id="display" style="border: red; width: 50%"></p>
+
+<P id="display2" style="border: red;width: 50%; left: 50%"></P>
+<br>
+<button type="button" onclick="shuffle()">SHUFFLE</button>
+<button type="button" onclick="distribute()">DISTRIBUTE</button>
+<button type="button" onclick="result()">RESULT</button>
+<script>
+
+        let count = 0;
+        let array = [];
+        let arrayPlayer1 = [];
+        let arrayPlayer2 = [];
+        let displ1 = document.getElementById('display');
+        let displ2 = document.getElementById('display2');
+        for (let i = 1; i <= 52; i++) {
+            array.push(i);
+            shuffle();
+        }
+         function shuffle() {
+             array.sort(function () {
+                 return 0.5 - Math.random();
+             })
+             displ1.innerHTML = " " +array;
+             displ2.innerText =" ";
+         }
+        function distribute() {
+            arrayPlayer2=[];
+            arrayPlayer1=[];
+            for (let i = 0; i < 52; i += 2) {
+                arrayPlayer1.push(array[i]);
+                arrayPlayer2.push(array[i + 1]);
+            }
+            displ1.innerHTML = "Player1: " + arrayPlayer1;
+           displ2.innerHTML = "player2: " + arrayPlayer2;
+        }
+        function result() {
+            for (let i = 1; i <= 26; i++) {
+                if (arrayPlayer1[i] > arrayPlayer2[i]) {
+                    count = count + 1;
+                }
+            }
+
+                if (count < 13) {
+                    displ1.innerHTML = (' Player2: Win');
+                } else if (count > 13) {
+                    displ1.innerHTML = (' Player1: Win');
+                } else {
+                    displ1.innerHTML = (' Player1: HÒA : Player2');
+                }
+                displ2.innerHTML = " ";
+
+        }
+
+</script>
+</body>
+</html>
